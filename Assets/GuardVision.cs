@@ -18,12 +18,15 @@ public class Guard : MonoBehaviour
     private float cooldownTimer; // Timer for cooldown between movements
     private bool isMoving = true; // Flag to indicate movement state
     public PolygonCollider2D pc;
+    public logicScript logic;
+    public RobberScript robber;
 
     Vector3 temp;
     void Start()
     {
         targetPosition = new Vector3(13f, 0f, 0f); // Initial target position
-        
+        logic = GameObject.FindGameObjectWithTag("logic").GetComponent<logicScript>();
+        robber = GameObject.FindGameObjectWithTag("Robber").GetComponent<RobberScript>();
     }
 
     void Update()
@@ -70,6 +73,13 @@ public class Guard : MonoBehaviour
         if (Mathf.Abs(transform.position.x - targetPosition.x) < 0.1f)
         {
             isMoving = false; // Stop movement and start cooldown
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.CompareTag("Robber")){
+            logic.gameOver();
+            robber.isAlive = false;
         }
     }
 }
