@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GuardSpawner : MonoBehaviour
+public class SpawnExitDoor : MonoBehaviour
 {
-    public GameObject guard;
+
+    public GameObject door;
     bool nextLevel;
     // Start is called before the first frame update
     void Start()
@@ -17,10 +18,7 @@ public class GuardSpawner : MonoBehaviour
     {
         if (nextLevel)
         {
-            transform.position = Random.insideUnitCircle * 1;
-            Instantiate(guard, transform.position, transform.rotation);
-            transform.position = Random.insideUnitCircle * 1;
-            Instantiate(guard, transform.position, transform.rotation);
+            Instantiate(door, transform.position, transform.rotation);
             nextLevel = false;
         }
     }
