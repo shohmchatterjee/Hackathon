@@ -10,6 +10,8 @@ public class logicScript : MonoBehaviour
     public Text scoreboard;
     public GameObject gameOverScreen;
 
+    [SerializeField] private List<string> _sceneList;
+
     [ContextMenu("Increase Score")]
     public void Score()
     {
@@ -23,5 +25,13 @@ public class logicScript : MonoBehaviour
 
     public void gameOver(){
         gameOverScreen.SetActive(true);
+    }
+
+    public void nextLevel(){
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        if (currentScene < _sceneList.Count)
+            SceneManager.LoadScene(_sceneList[currentScene + 1]);
+        else
+            gameOver();
     }
 }
