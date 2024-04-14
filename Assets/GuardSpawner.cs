@@ -17,9 +17,9 @@ public class GuardSpawner : MonoBehaviour
     {
         if (nextLevel)
         {
-            transform.position = Random.insideUnitCircle * 1;
+            transform.position = Random.insideUnitCircle * 50;
             Instantiate(guard, transform.position, transform.rotation);
-            transform.position = Random.insideUnitCircle * 1;
+            transform.position = Random.insideUnitCircle * 50;
             Instantiate(guard, transform.position, transform.rotation);
             nextLevel = false;
         }
