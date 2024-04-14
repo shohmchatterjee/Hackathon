@@ -18,9 +18,9 @@ public class goldSpawner : MonoBehaviour
     {
         if (nextLevel)
         {
-            transform.position = Random.insideUnitCircle * 50;
+            transform.position = Random.insideUnitCircle * 30;
             Instantiate(gold, transform.position, transform.rotation);
-            transform.position = Random.insideUnitCircle * 50;
+            transform.position = Random.insideUnitCircle * 30;
             Instantiate(gold, transform.position, transform.rotation);
             nextLevel = false;
         }
